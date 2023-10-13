@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Canciones{% endblock %}
+{% block body %}
+    <h1>Información de la canción</h1>
+    {% if cancion %}
+        {{include ('partials/datos_cancion.html.twig', {'cancion':cancion})}}
+    {% else %}
+            <p>Canción no encontrada</p>
+        {% endif %}
+{% endblock %}

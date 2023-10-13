@@ -16,4 +16,12 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
+    'insertar_cancion' => [[], ['_controller' => 'App\\Controller\\MusicController::insertar'], [], [['text', '/music/insertar']], [], [], []],
+    'eliminar_cancion' => [['id'], ['_controller' => 'App\\Controller\\MusicController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/music/delete']], [], [], []],
+    'app_music' => [[], ['_controller' => 'App\\Controller\\MusicController::index'], [], [['text', '/music']], [], [], []],
+    'ficha_cancion' => [['codigo'], ['_controller' => 'App\\Controller\\MusicController::ficha'], [], [['variable', '/', '[^/]++', 'codigo', true], ['text', '/music']], [], [], []],
+    'buscar_cancion' => [['texto'], ['_controller' => 'App\\Controller\\MusicController::buscar'], [], [['variable', '/', '[^/]++', 'texto', true], ['text', '/music/buscar']], [], [], []],
+    'modificar_contacto' => [['id', 'nombre'], ['_controller' => 'App\\Controller\\MusicController::update'], [], [['variable', '/', '[^/]++', 'nombre', true], ['variable', '/', '[^/]++', 'id', true], ['text', '/music/update']], [], [], []],
+    'app_page' => [[], ['_controller' => 'App\\Controller\\PageController::index'], [], [['text', '/page']], [], [], []],
+    'inicio' => [[], ['_controller' => 'App\\Controller\\PageController::inicio'], [], [['text', '/']], [], [], []],
 ];

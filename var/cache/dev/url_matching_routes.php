@@ -14,6 +14,10 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/music/insertar' => [[['_route' => 'insertar_cancion', '_controller' => 'App\\Controller\\MusicController::insertar'], null, null, null, false, false, null]],
+        '/music' => [[['_route' => 'app_music', '_controller' => 'App\\Controller\\MusicController::index'], null, null, null, false, false, null]],
+        '/page' => [[['_route' => 'app_page', '_controller' => 'App\\Controller\\PageController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'inicio', '_controller' => 'App\\Controller\\PageController::inicio'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -32,6 +36,12 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/music/(?'
+                    .'|delete/([^/]++)(*:194)'
+                    .'|([^/]++)(*:210)'
+                    .'|buscar/([^/]++)(*:233)'
+                    .'|update/([^/]++)/([^/]++)(*:265)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -41,8 +51,12 @@ return [
         116 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        159 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        194 => [[['_route' => 'eliminar_cancion', '_controller' => 'App\\Controller\\MusicController::delete'], ['id'], null, null, false, true, null]],
+        210 => [[['_route' => 'ficha_cancion', '_controller' => 'App\\Controller\\MusicController::ficha'], ['codigo'], null, null, false, true, null]],
+        233 => [[['_route' => 'buscar_cancion', '_controller' => 'App\\Controller\\MusicController::buscar'], ['texto'], null, null, false, true, null]],
+        265 => [
+            [['_route' => 'modificar_contacto', '_controller' => 'App\\Controller\\MusicController::update'], ['id', 'nombre'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
