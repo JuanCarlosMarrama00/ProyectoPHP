@@ -15,6 +15,8 @@ return [
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/music/insertar' => [[['_route' => 'insertar_cancion', '_controller' => 'App\\Controller\\MusicController::insertar'], null, null, null, false, false, null]],
+        '/music/insertarConArtista' => [[['_route' => 'insertar_cancion_con_artista', '_controller' => 'App\\Controller\\MusicController::insertarConProvincia'], null, null, null, false, false, null]],
+        '/music/insertarSinArtista' => [[['_route' => 'insertar_cancion_sin_provincia', '_controller' => 'App\\Controller\\MusicController::insertarSinProvincia'], null, null, null, false, false, null]],
         '/music' => [[['_route' => 'app_music', '_controller' => 'App\\Controller\\MusicController::index'], null, null, null, false, false, null]],
         '/page' => [[['_route' => 'app_page', '_controller' => 'App\\Controller\\PageController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'inicio', '_controller' => 'App\\Controller\\PageController::inicio'], null, null, null, false, false, null]],

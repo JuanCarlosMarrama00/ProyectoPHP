@@ -16,11 +16,11 @@ class Canciones
     #[ORM\Column(length: 255)]
     private ?string $nombre = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $artista = null;
-
     #[ORM\Column(length: 4)]
     private ?string $publicacion = null;
+
+    #[ORM\ManyToOne(inversedBy: 'canciones')]
+    private ?Artista $artista = null;
 
     public function getId(): ?int
     {
@@ -39,18 +39,6 @@ class Canciones
         return $this;
     }
 
-    public function getArtista(): ?string
-    {
-        return $this->artista;
-    }
-
-    public function setArtista(string $artista): static
-    {
-        $this->artista = $artista;
-
-        return $this;
-    }
-
     public function getPublicacion(): ?string
     {
         return $this->publicacion;
@@ -59,6 +47,18 @@ class Canciones
     public function setPublicacion(string $publicacion): static
     {
         $this->publicacion = $publicacion;
+
+        return $this;
+    }
+
+    public function getArtista(): ?Artista
+    {
+        return $this->artista;
+    }
+
+    public function setArtista(?Artista $artista): static
+    {
+        $this->artista = $artista;
 
         return $this;
     }

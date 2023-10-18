@@ -1,5 +1,7 @@
 <ul>
     <li><strong>{{cancion.nombre}}</strong></li>
-    <li><strong>Artista: </strong>{{cancion.artista}}</li>
     <li><strong>Año de publicación: </strong>{{cancion.publicacion}}</li>
+    {% if cancion.artista.id > 0 %}
+    <li><strong>Artista: </strong>{{cancion.artista.nombre}}</li>
+    {% endif %}
 </ul>

@@ -341,6 +341,10 @@
         <argument type="service" id=".service_locator.jIxfAsi.App\Controller\PageController"/>
       </call>
     </service>
+    <service id="App\Repository\ArtistaRepository" class="App\Repository\ArtistaRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\CancionesRepository" class="App\Repository\CancionesRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -3941,7 +3945,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.zECD7S0"/>
+      <argument type="service" id=".service_locator.i2P3ZWI"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5717,6 +5721,8 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PageController" class="App\Controller\PageController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PageController" class="App\Controller\PageController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PageController" class="App\Controller\PageController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ArtistaRepository" class="App\Repository\ArtistaRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ArtistaRepository" class="App\Repository\ArtistaRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CancionesRepository" class="App\Repository\CancionesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CancionesRepository" class="App\Repository\CancionesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.gSv9zYw" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6097,13 +6103,15 @@
         <argument key="doctrine" type="service_closure" id="doctrine"/>
       </argument>
     </service>
-    <service id=".service_locator.B87beSO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.5L.6n2R" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\MusicController::buscar" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController::delete" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController::ficha" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController::insertar" type="service_closure" id=".service_locator.GQZbvNR"/>
+        <argument key="App\Controller\MusicController::insertarConProvincia" type="service_closure" id=".service_locator.GQZbvNR"/>
+        <argument key="App\Controller\MusicController::insertarSinProvincia" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController::update" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -6113,6 +6121,8 @@
         <argument key="App\Controller\MusicController:delete" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController:ficha" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController:insertar" type="service_closure" id=".service_locator.GQZbvNR"/>
+        <argument key="App\Controller\MusicController:insertarConProvincia" type="service_closure" id=".service_locator.GQZbvNR"/>
+        <argument key="App\Controller\MusicController:insertarSinProvincia" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="App\Controller\MusicController:update" type="service_closure" id=".service_locator.GQZbvNR"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.xUrKPVU"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.xUrKPVU"/>
@@ -6369,9 +6379,10 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_subscriber" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.zECD7S0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.i2P3ZWI" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\ArtistaRepository" type="service_closure" id="App\Repository\ArtistaRepository"/>
         <argument key="App\Repository\CancionesRepository" type="service_closure" id="App\Repository\CancionesRepository"/>
       </argument>
     </service>
@@ -6903,12 +6914,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.B87beSO"/>
+      <argument type="service" id=".service_locator.5L.6n2R"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.B87beSO"/>
+      <argument type="service" id=".service_locator.5L.6n2R"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -7844,7 +7855,7 @@
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.B87beSO"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.5L.6n2R"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -7865,7 +7876,7 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.QLuU_bl" alias=".service_locator.B87beSO"/>
+    <service id=".service_locator.FtQ.iBw" alias=".service_locator.5L.6n2R"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.Za9MpXe" alias=".service_locator.y4dplYt"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
