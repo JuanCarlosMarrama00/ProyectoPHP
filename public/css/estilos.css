@@ -1,0 +1,16 @@
+body{
+    background-color: #33ff7a;
+}
+
+h1{
+    border-bottom: 1px solid black;
+}
+
+strong{
+    color: red;
+}
+
+li{
+    list-style: square;
+}
+

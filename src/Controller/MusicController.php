@@ -125,7 +125,8 @@ class MusicController extends AbstractController
     {
         $repositorio = $doctrine->getRepository(Canciones::class);
         $canciones = $repositorio->findByName($texto);
-        return $this->render('lista_canciones.html.twig', ['canciones' => $canciones]);
+        $contador = count($canciones);
+        return $this->render('lista_canciones.html.twig', ['canciones' => $canciones, 'texto' => $texto, 'contador' => $contador]);
     }
 
     #[Route('/music/update/{id}/{nombre}', name:"modificar_contacto")]

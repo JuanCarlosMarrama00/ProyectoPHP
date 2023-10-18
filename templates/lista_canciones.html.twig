@@ -3,6 +3,7 @@
 {% block body %}
     <h1>Listado de canciones</h1>
     {% if canciones %}
+        <p>Se han encontrado {{ contador }} canciones con el texto {{ texto }}:</p>
         {% for cancion in canciones %}
             {{include ('partials/datos_cancion.html.twig', {'cancion':cancion})}}
         {% endfor %}
