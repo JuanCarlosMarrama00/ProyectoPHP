@@ -17,6 +17,7 @@ return [
         '/music/insertar' => [[['_route' => 'insertar_cancion', '_controller' => 'App\\Controller\\MusicController::insertar'], null, null, null, false, false, null]],
         '/music/insertarConArtista' => [[['_route' => 'insertar_cancion_con_artista', '_controller' => 'App\\Controller\\MusicController::insertarConProvincia'], null, null, null, false, false, null]],
         '/music/insertarSinArtista' => [[['_route' => 'insertar_cancion_sin_provincia', '_controller' => 'App\\Controller\\MusicController::insertarSinProvincia'], null, null, null, false, false, null]],
+        '/music/nuevo' => [[['_route' => 'nuevo_cancion', '_controller' => 'App\\Controller\\MusicController::nuevo'], null, null, null, false, false, null]],
         '/music' => [[['_route' => 'app_music', '_controller' => 'App\\Controller\\MusicController::index'], null, null, null, false, false, null]],
         '/page' => [[['_route' => 'app_page', '_controller' => 'App\\Controller\\PageController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'inicio', '_controller' => 'App\\Controller\\PageController::inicio'], null, null, null, false, false, null]],
@@ -39,10 +40,11 @@ return [
                     .')'
                 .')'
                 .'|/music/(?'
-                    .'|delete/([^/]++)(*:194)'
-                    .'|([^/]++)(*:210)'
-                    .'|buscar/([^/]++)(*:233)'
-                    .'|update/([^/]++)/([^/]++)(*:265)'
+                    .'|editar/([^/]++)(*:194)'
+                    .'|delete/([^/]++)(*:217)'
+                    .'|([^/]++)(*:233)'
+                    .'|buscar/([^/]++)(*:256)'
+                    .'|update/([^/]++)/([^/]++)(*:288)'
                 .')'
             .')/?$}sDu',
     ],
@@ -54,10 +56,11 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        194 => [[['_route' => 'eliminar_cancion', '_controller' => 'App\\Controller\\MusicController::delete'], ['id'], null, null, false, true, null]],
-        210 => [[['_route' => 'ficha_cancion', '_controller' => 'App\\Controller\\MusicController::ficha'], ['codigo'], null, null, false, true, null]],
-        233 => [[['_route' => 'buscar_cancion', '_controller' => 'App\\Controller\\MusicController::buscar'], ['texto'], null, null, false, true, null]],
-        265 => [
+        194 => [[['_route' => 'editar_cancion', '_controller' => 'App\\Controller\\MusicController::editar'], ['codigo'], null, null, false, true, null]],
+        217 => [[['_route' => 'eliminar_cancion', '_controller' => 'App\\Controller\\MusicController::delete'], ['id'], null, null, false, true, null]],
+        233 => [[['_route' => 'ficha_cancion', '_controller' => 'App\\Controller\\MusicController::ficha'], ['codigo'], null, null, false, true, null]],
+        256 => [[['_route' => 'buscar_cancion', '_controller' => 'App\\Controller\\MusicController::buscar'], ['texto'], null, null, false, true, null]],
+        288 => [
             [['_route' => 'modificar_contacto', '_controller' => 'App\\Controller\\MusicController::update'], ['id', 'nombre'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

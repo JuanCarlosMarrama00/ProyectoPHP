@@ -19,6 +19,8 @@ return [
     'insertar_cancion' => [[], ['_controller' => 'App\\Controller\\MusicController::insertar'], [], [['text', '/music/insertar']], [], [], []],
     'insertar_cancion_con_artista' => [[], ['_controller' => 'App\\Controller\\MusicController::insertarConProvincia'], [], [['text', '/music/insertarConArtista']], [], [], []],
     'insertar_cancion_sin_provincia' => [[], ['_controller' => 'App\\Controller\\MusicController::insertarSinProvincia'], [], [['text', '/music/insertarSinArtista']], [], [], []],
+    'nuevo_cancion' => [[], ['_controller' => 'App\\Controller\\MusicController::nuevo'], [], [['text', '/music/nuevo']], [], [], []],
+    'editar_cancion' => [['codigo'], ['_controller' => 'App\\Controller\\MusicController::editar'], [], [['variable', '/', '[^/]++', 'codigo', true], ['text', '/music/editar']], [], [], []],
     'eliminar_cancion' => [['id'], ['_controller' => 'App\\Controller\\MusicController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/music/delete']], [], [], []],
     'app_music' => [[], ['_controller' => 'App\\Controller\\MusicController::index'], [], [['text', '/music']], [], [], []],
     'ficha_cancion' => [['codigo'], ['_controller' => 'App\\Controller\\MusicController::ficha'], [], [['variable', '/', '[^/]++', 'codigo', true], ['text', '/music']], [], [], []],

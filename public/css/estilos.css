@@ -1,16 +1,47 @@
 body{
-    background-color: #33ff7a;
+    background-color: black;
+    color: white;
 }
 
 h1{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 }
 
-strong{
-    color: red;
+strong, label{
+    color: #33ff7a;
 }
 
 li{
     list-style: square;
+}
+
+form{
+    margin:20px 0px 5px 15px;
+}
+
+input[type="text"] {
+    margin:7px 5px 5px 0px;
+    width: 80%;
+    border-radius: 5px;
+    display: block;
+}
+
+input[type="text"]:hover {
+    box-shadow: 2px 2px 2px;
+}
+
+select{
+    margin: 7px 5px 5px 0px;
+    width: 70%;
+}
+
+button[type="submit"]{
+    border-radius: 15px;
+    background-color: #33ff7a;
+    border: #33ff7a;
+}
+
+button[type="submit"]:hover{
+    background-color: #2e7e4a;
 }
 
