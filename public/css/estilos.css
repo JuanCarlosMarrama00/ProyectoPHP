@@ -39,6 +39,7 @@ button[type="submit"]{
     border-radius: 15px;
     background-color: #33ff7a;
     border: #33ff7a;
+    color: black;
 }
 
 button[type="submit"]:hover{
