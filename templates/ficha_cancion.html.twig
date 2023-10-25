@@ -6,6 +6,7 @@
         {{include ('partials/datos_cancion.html.twig', {'cancion':cancion})}}
         <a href="{{ path('editar_cancion', {'cancion':cancion, 'codigo': cancion.id}) }}" class="btn">Editar</a>
         <a href="{{ path('eliminar_cancion', {'cancion':cancion, 'id': cancion.id}) }}" class="btn">Eliminar</a>
+        <a href="{{ path('app_index') }}" class="btn">Volver al Menú Principal</a>
     {% else %}
             <p>Canción no encontrada</p>
         {% endif %}

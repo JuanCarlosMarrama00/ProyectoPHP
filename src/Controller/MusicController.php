@@ -149,7 +149,7 @@ class MusicController extends AbstractController
             try {
                 $entityManager->remove($cancion);
                 $entityManager->flush();
-                return new Response("Canción eliminada");
+                return $this->redirectToRoute('app_index');
             } catch (\Exception $e) {
                 return new Response("Error eliminando canción");
             }
