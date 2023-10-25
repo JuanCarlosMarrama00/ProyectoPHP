@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Canciones{% endblock %}
+{% block body %}
+    <h1>Listado de canciones</h1>
+    {% if canciones %}
+        {% for cancion in canciones %}
+            {{include ('partials/datos_cancion.html.twig', {'cancion':cancion})}}
+        {% endfor %}
+    {% else %}
+        <p>No se han encontrado canciones con el texto</p>
+    {% endif %}
+{% endblock %}

@@ -1,5 +1,5 @@
 <ul>
-    <li><strong>{{cancion.nombre}}</strong></li>
+    <li><a href="{{ path('ficha_cancion', {'cancion':cancion, 'codigo': cancion.id}) }}">{{ cancion.nombre}}</a></li>
     <li><strong>Año de publicación: </strong>{{cancion.publicacion}}</li>
     {% if cancion.artista.id > 0 %}
     <li><strong>Artista: </strong>{{cancion.artista.nombre}}</li>

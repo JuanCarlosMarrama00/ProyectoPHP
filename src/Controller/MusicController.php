@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class MusicController extends AbstractController
 {
@@ -127,7 +128,7 @@ class MusicController extends AbstractController
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($cancion);
                 $entityManager->flush();
-                return $this->redirectToRoute('ficha_cancion', ["codigo" => $cancion->getId(), "cancion" => $cancion]);
+                return $this->redirectToRoute('app_index');
             }
 
             return $this->render('editar.html.twig', array('formulario' => $formulario->createView()));
@@ -158,20 +159,39 @@ class MusicController extends AbstractController
     }
 
     #[Route('/music', name: 'app_music')]
-    public function index(): Response
+    public function menuMusica(): Response
     {
         return $this->render('inicio.html.twig', [
             'controller_name' => 'MusicController',
         ]);
     }
 
-    #[Route('/music/{codigo}', name: "ficha_cancion")]
-    public function ficha(ManagerRegistry $doctrine, $codigo): Response
+    #[Route('/', name: 'app_index')]
+    public function index(ManagerRegistry $doctrine): Response
     {
         $repositorio = $doctrine->getRepository(Canciones::class);
-        $cancion = $repositorio->find($codigo);
+        $canciones = $repositorio->findAll();
+        return $this->render('principal.html.twig', [
+            'controller_name' => 'MusicController', 'canciones' => $canciones,
+        ]);
+    }
 
-        return $this->render('ficha_cancion.html.twig', ['cancion' => $cancion]);
+    #[Route('/music/{codigo}', name: "ficha_cancion")]
+    public function ficha(ManagerRegistry $doctrine, $codigo, Request $request, SessionInterface $session): Response
+    {
+        $user = $this->getUser();
+
+        if($user) {
+            $repositorio = $doctrine->getRepository(Canciones::class);
+            $cancion = $repositorio->find($codigo);
+    
+            return $this->render('ficha_cancion.html.twig', ['cancion' => $cancion]);
+        } else {
+            $url = parse_url($request->getUri());
+            $session->set('url', $url['path']);
+            return $this->redirectToRoute('app_login');
+        }
+       
     }
 
     #[Route('/music/buscar/{texto}', name: "buscar_cancion")]

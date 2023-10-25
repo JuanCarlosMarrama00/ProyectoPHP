@@ -18,9 +18,15 @@ return [
         '/music/insertarConArtista' => [[['_route' => 'insertar_cancion_con_artista', '_controller' => 'App\\Controller\\MusicController::insertarConProvincia'], null, null, null, false, false, null]],
         '/music/insertarSinArtista' => [[['_route' => 'insertar_cancion_sin_provincia', '_controller' => 'App\\Controller\\MusicController::insertarSinProvincia'], null, null, null, false, false, null]],
         '/music/nuevo' => [[['_route' => 'nuevo_cancion', '_controller' => 'App\\Controller\\MusicController::nuevo'], null, null, null, false, false, null]],
-        '/music' => [[['_route' => 'app_music', '_controller' => 'App\\Controller\\MusicController::index'], null, null, null, false, false, null]],
+        '/music' => [[['_route' => 'app_music', '_controller' => 'App\\Controller\\MusicController::menuMusica'], null, null, null, false, false, null]],
+        '/' => [
+            [['_route' => 'app_index', '_controller' => 'App\\Controller\\MusicController::index'], null, null, null, false, false, null],
+            [['_route' => 'inicio', '_controller' => 'App\\Controller\\PageController::inicio'], null, null, null, false, false, null],
+        ],
         '/page' => [[['_route' => 'app_page', '_controller' => 'App\\Controller\\PageController::index'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'inicio', '_controller' => 'App\\Controller\\PageController::inicio'], null, null, null, false, false, null]],
+        '/register' => [[['_route' => 'app_register', '_controller' => 'App\\Controller\\RegistrationController::register'], null, null, null, false, false, null]],
+        '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

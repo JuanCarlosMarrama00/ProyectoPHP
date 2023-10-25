@@ -4,6 +4,8 @@
     <h1>Información de la canción</h1>
     {% if cancion %}
         {{include ('partials/datos_cancion.html.twig', {'cancion':cancion})}}
+        <a href="{{ path('editar_cancion', {'cancion':cancion, 'codigo': cancion.id}) }}" class="btn">Editar</a>
+        <a href="{{ path('eliminar_cancion', {'cancion':cancion, 'id': cancion.id}) }}" class="btn">Eliminar</a>
     {% else %}
             <p>Canción no encontrada</p>
         {% endif %}
